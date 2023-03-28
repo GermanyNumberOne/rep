@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd
+      http://www.liquibase.org/xml/ns/pro
+      http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd">
+
+    <changeSet id="create-languages-table" author="I">
+        <sqlFile path="/scripts/sql/loc/create-languages-table.sql" relativeToChangelogFile="true"/>
+        <insert tableName="languages">
+            <column name="name" value="Russian"></column>
+        </insert>
+        <insert tableName="languages">
+            <column name="name" value="English"></column>
+        </insert>
+    </changeSet>
+
+    <changeSet id="create-countries-table" author="I">
+        <sqlFile path="/scripts/sql/loc/create-countries-table.sql" relativeToChangelogFile="true"/>
+        <insert tableName="countries">
+            <column name="name" value="Russia"></column>
+        </insert>
+        <insert tableName="countries">
+            <column name="name" value="England"></column>
+        </insert>
+    </changeSet>
+
+    <changeSet id="create-users-table" author="I">
+        <sqlFile path="/scripts/sql/main-model/create-users-table.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="create-roles-table" author="I">
+        <sqlFile path="/scripts/sql/main-model/create-roles-table.sql" relativeToChangelogFile="true"/>
+        <insert tableName="roles">
+            <column name="name" value="User"></column>
+        </insert>
+        <insert tableName="roles">
+            <column name="name" value="Admin"></column>
+        </insert>
+    </changeSet>
+
+    <changeSet id="create-token-table" author="I">
+        <sqlFile path="/scripts/sql/main-model/create-tokens-table.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="create-users-roles-table" author="I">
+        <sqlFile path="/scripts/sql/ref/create-users_roles-table.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="create-actors-table" author="I">
+        <sqlFile path="/scripts/sql/main-model/create-actors-table.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+    
+    <changeSet id="create-genres-table" author="I">
+        <sqlFile path="/scripts/sql/main-model/create-genres-table.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+    
+    <changeSet id="create-lists-table" author="I">
+        <sqlFile path="/scripts/sql/main-model/create-lists-table.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+    
+    <changeSet id="create-movies-table" author="I">
+        <sqlFile path="/scripts/sql/main-model/create-movies-table.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="create-comments-table" author="I">
+        <sqlFile path="/scripts/sql/main-model/create-comments-table.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+    
+    <changeSet id="create-notes-table" author="I">
+        <sqlFile path="/scripts/sql/main-model/create-notes-table.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+    
+    <changeSet id="create-movies_actors-table" author="I">
+        <sqlFile path="/scripts/sql/ref/create-movies_actors-table.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+    
+    <changeSet id="create-movies_genres-table" author="I">
+        <sqlFile path="/scripts/sql/ref/create-movies_genres-table.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="create-actors_translate-table" author="I">
+        <sqlFile path="/scripts/sql/loc/create-actors_translate-table.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="create-genres_translation-table" author="I">
+        <sqlFile path="/scripts/sql/loc/create-genres_translation-table.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="create-movies_translate-table" author="I">
+        <sqlFile path="/scripts/sql/loc/create-movies_translate-table.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+</databaseChangeLog>
