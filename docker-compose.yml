@@ -1,14 +1,19 @@
 services:
+  app:
+    build: .
+    container_name: movie-list-app
+    depends_on:
+      - postgres
+    ports:
+      - "6060:8080"
+
   postgres:
-    container_name: database
+    container_name: postgres
     image: 'postgres:latest'
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
       POSTGRES_DB: postgres
-      PGDATA: ./pg_data:/var/lib/postgresql/data/pgdata
     restart: always
-    volumes:
-      - ./pg_data:/var/lib/postgresql/data/pgdata
     ports:
-      - "5432:5432"
+      - "6543:5432"
