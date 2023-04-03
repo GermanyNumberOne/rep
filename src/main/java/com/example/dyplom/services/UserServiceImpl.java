@@ -3,6 +3,7 @@ package com.example.dyplom.services;
 import com.example.dyplom.dao.UserDao;
 import com.example.dyplom.dto.UserDto;
 import com.example.dyplom.model.User;
+import com.example.dyplom.services.api.RoleService;
 import com.example.dyplom.services.api.UserService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserDao userDao;
+    private RoleService roleService;
 
     private final ModelMapper modelMapper;
 
@@ -35,7 +37,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto save(UserDto userDto){
         User user = userDao.save(modelMapper.map(userDto, User.class));
-
         return modelMapper.map(user, UserDto.class);
     }
 

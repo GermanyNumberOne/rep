@@ -25,15 +25,17 @@ public class JwtCsrfFilter extends GenericFilterBean {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         String token = jwtTokenProvider.resolveToken((HttpServletRequest) servletRequest);
-
+        logger.warn("token: " + token);
         if(((HttpServletRequest) servletRequest).getRequestURI().equals("/auth/log-out")){
             jwtTokenProvider.deleteToken(token);
         }
 
         if(token != null && jwtTokenProvider.validateToken(token, (HttpServletRequest) servletRequest)){
             Authentication authentication = jwtTokenProvider.getAuthentication(token);
+            log.warn("token is valid");
 
             if(authentication != null){
+                log.warn("authentication not null");
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         }

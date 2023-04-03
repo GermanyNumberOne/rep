@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface TokenService{
     TokenDto save(TokenDto dto);
-    void deleteById(String token);
-    TokenDto findById(String token);
+    void deleteByToken(String token);
+    TokenDto findByToken(String token);
     List<TokenDto> getAll();
 }

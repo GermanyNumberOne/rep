@@ -14,4 +14,5 @@ public class AuthenticationResponseDto {
     private String firstname;
     private String surname;
     private String email;
+    //private UserDto user;
 }

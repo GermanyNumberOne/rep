@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/auth")
 @AllArgsConstructor
-@Slf4j
 public class AuthenticationController {
     private AuthenticationService authenticationService;
     private AuthenticationManager authenticationManager;
@@ -55,7 +54,6 @@ public class AuthenticationController {
             //return ResponseEntity.ok().header(HttpHeaders.AUTHORIZATION, jwtTokenProvider.generateToken(user)).body(userDto);
         }
         catch (AuthenticationException e){
-            log.warn(e.getMessage());
             throw new BadCredentialsException("invalid login or password");
         }
     }

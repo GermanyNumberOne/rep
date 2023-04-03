@@ -76,7 +76,7 @@ public class JwtTokenProvider {
     }
 
     public void deleteToken(String token){
-        tokenService.deleteById(token);
+        tokenService.deleteByToken(token);
     }
 
 
@@ -91,12 +91,17 @@ public class JwtTokenProvider {
     public boolean validateToken(String token, HttpServletRequest request) {
         try {
             Jws<Claims> claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
+            log.warn("resolve token" + claims.getBody().getExpiration().toString());
+            TokenDto tokenDto = tokenService.findByToken(token);
 
-            if(tokenService.findById(token).getToken() == null){
+            if(tokenService.findByToken(token).getToken() == null){
+                log.warn("token Dto: " + tokenDto);
+                log.warn("token Dto token: " + tokenDto.getToken());
                 return false;
             }
 
             if (claims.getBody().getExpiration().before(new Date())) {
+                log.warn("expired");
                 return false;
             }
 

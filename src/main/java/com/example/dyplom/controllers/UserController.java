@@ -16,7 +16,6 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
 
-    //@Secured("Role_Admin")
     @GetMapping(value = "/get-all",produces = MediaType.APPLICATION_JSON_VALUE)
     public List<UserDto> getAll(){
         return userService.getAll();

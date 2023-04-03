@@ -26,14 +26,14 @@ public class TokenServiceImpl implements TokenService {
 
     @Transactional
     @Override
-    public void deleteById(String token) {
+    public void deleteByToken(String token) {
         tokenDao.deleteByToken(token);
     }
 
     @Transactional
     @Override
-    public TokenDto findById(String token) {
-        return modelMapper.map(tokenDao.findById(token), TokenDto.class);
+    public TokenDto findByToken(String token) {
+        return modelMapper.map(tokenDao.findTokenByToken(token), TokenDto.class);
     }
 
     @Transactional
