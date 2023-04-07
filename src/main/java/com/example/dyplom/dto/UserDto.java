@@ -16,6 +16,7 @@ public class UserDto extends BaseDto {
     private String surname;
     private String email;
     private String password;
+    private String imagePath;
 
     private Language language;
     private Country country;

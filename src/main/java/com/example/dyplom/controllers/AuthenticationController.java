@@ -43,11 +43,9 @@ public class AuthenticationController {
             User user = (User)authentication.getPrincipal();
             UserDto userDto = userService.findByEmail(authentication.getName());
             AuthenticationResponseDto authenticationResponseDto = new AuthenticationResponseDto();
-            authenticationResponseDto.setEmail(userDto.getEmail());
             authenticationResponseDto.setToken(jwtTokenProvider.generateToken(user));
-            authenticationResponseDto.setFirstname(userDto.getFirstname());
-            authenticationResponseDto.setNickname(userDto.getNickname());
-            authenticationResponseDto.setSurname(userDto.getSurname());
+            authenticationResponseDto.setUser(userDto);
+
 
 
             return ResponseEntity.ok().body(authenticationResponseDto);

@@ -10,9 +10,9 @@ import java.util.List;
 @Setter
 public class AuthenticationResponseDto {
     private String token;
-    private String nickname;
+    /*private String nickname;
     private String firstname;
     private String surname;
-    private String email;
-    //private UserDto user;
+    private String email;*/
+    private UserDto user;
 }

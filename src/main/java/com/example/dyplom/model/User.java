@@ -15,7 +15,8 @@ public class User extends BaseEntity{
     private String nickname;
     private String firstname;
     private String surname;
-
+    @Column(name = "image_path")
+    private String imagePath;
     private String email;
     private String password;
 

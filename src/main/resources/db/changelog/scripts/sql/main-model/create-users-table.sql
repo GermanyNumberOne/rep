@@ -4,6 +4,7 @@ CREATE TABLE users
     nickname  varchar(255) NOT NULL UNIQUE,
     firstname varchar(255),
     surname   varchar(255),
+    image_path varchar(255),
     email varchar(255) NOT NULL UNIQUE,
     country_id serial not null ,
     language_id serial NOT NULL,

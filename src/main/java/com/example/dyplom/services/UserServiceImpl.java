@@ -5,11 +5,12 @@ import com.example.dyplom.dto.UserDto;
 import com.example.dyplom.model.User;
 import com.example.dyplom.services.api.RoleService;
 import com.example.dyplom.services.api.UserService;
+import com.example.dyplom.utils.FileUtil;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,12 +20,23 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
     private final UserDao userDao;
     private RoleService roleService;
+    private final String imagesFolderSource = "images/";
 
     private final ModelMapper modelMapper;
 
+    @Transactional
     @Override
     public UserDto findByEmail(String email) {
         return modelMapper.map(userDao.findByEmail(email), UserDto.class);
+    }
+
+    @Transactional
+    @Override
+    public UserDto changePhoto(Long id, MultipartFile file) {
+        String path = FileUtil.upload(FileUtil.userImagesFolder, file.getOriginalFilename(), file);
+        User user = userDao.getById(id);
+        user.setImagePath(path);
+        return modelMapper.map(userDao.save(user), UserDto.class);
     }
 
     @Transactional
