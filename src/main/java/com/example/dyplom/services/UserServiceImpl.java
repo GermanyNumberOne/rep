@@ -20,8 +20,6 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
     private final UserDao userDao;
     private RoleService roleService;
-    private final String imagesFolderSource = "images/";
-
     private final ModelMapper modelMapper;
 
     @Transactional
