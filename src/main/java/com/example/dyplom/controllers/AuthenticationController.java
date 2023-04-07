@@ -46,8 +46,6 @@ public class AuthenticationController {
             authenticationResponseDto.setToken(jwtTokenProvider.generateToken(user));
             authenticationResponseDto.setUser(userDto);
 
-
-
             return ResponseEntity.ok().body(authenticationResponseDto);
             //return ResponseEntity.ok().header(HttpHeaders.AUTHORIZATION, jwtTokenProvider.generateToken(user)).body(userDto);
         }

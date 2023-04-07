@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserDao userDao;
-    private RoleService roleService;
     private final ModelMapper modelMapper;
 
     @Transactional
@@ -30,9 +29,10 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public UserDto changePhoto(Long id, MultipartFile file) {
+    public UserDto changePhoto(String email, MultipartFile file) {
+        User user = userDao.findByEmail(email);
         String path = FileUtil.upload(FileUtil.userImagesFolder, file.getOriginalFilename(), file);
-        User user = userDao.getById(id);
+
         user.setImagePath(path);
         return modelMapper.map(userDao.save(user), UserDto.class);
     }

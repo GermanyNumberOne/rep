@@ -11,5 +11,5 @@ public interface UserService extends AbstractService<UserDto> {
     UserDto findByNickname(String nickname);
     void delete(UserDto userDto);
     UserDto findByEmail(String email);
-    UserDto changePhoto(Long id, MultipartFile file);
+    UserDto changePhoto(String email, MultipartFile file);
 }
